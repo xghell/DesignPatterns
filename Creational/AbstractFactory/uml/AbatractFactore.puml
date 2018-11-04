@@ -1,0 +1,29 @@
+@startuml
+
+namespace DesignPattern\Creational\AbstractFactory {
+    package Factory {
+        abstract class AbstractFactory {
+                +abstract createText(string text): Text
+        }
+        class HtmlFactory
+        class JsonFactory
+
+        HtmlFactory -up-|> AbstractFactory : extension
+        JsonFactory -up-|> AbstractFactory : extension
+    }
+
+    package Text {
+        abstract class Text {
+            #$text: string
+        }
+        class HtmlText
+        class JsonText
+
+        HtmlText -up-|> Text : extension
+        JsonText -up-|> Text : extension
+    }
+
+    Factory o-- Text : aggregation
+}
+
+@enduml
