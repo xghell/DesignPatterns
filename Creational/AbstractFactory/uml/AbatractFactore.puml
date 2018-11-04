@@ -2,28 +2,24 @@
 
 namespace DesignPattern\Creational\AbstractFactory {
     package Factory {
-        abstract class AbstractFactory {
-                +abstract createText(string text): Text
+        class AbstractFactory {
+                +createHtmlText(string text): Text
+                +createJsonText(string text): Text
         }
-        class HtmlFactory
-        class JsonFactory
-
-        HtmlFactory -up-|> AbstractFactory : extension
-        JsonFactory -up-|> AbstractFactory : extension
     }
 
-    package Text {
-        abstract class Text {
+    package Texts {
+        interface Text {
             #$text: string
         }
         class HtmlText
         class JsonText
 
-        HtmlText -up-|> Text : extension
-        JsonText -up-|> Text : extension
+        HtmlText .up.|> Text : implement
+        JsonText .up.|> Text : implement
     }
 
-    Factory o-- Text : aggregation
+    Factory o-- Texts : aggregation
 }
 
 @enduml
