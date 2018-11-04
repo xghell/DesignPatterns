@@ -8,9 +8,8 @@
 
 namespace DesignPatterns\Creational\AbstractFactory\Tests;
 
-use DesignPatterns\Creational\AbstractFactory\HtmlFactory;
+use DesignPatterns\Creational\AbstractFactory\TextFactory;
 use DesignPatterns\Creational\AbstractFactory\HtmlText;
-use DesignPatterns\Creational\AbstractFactory\JsonFactory;
 use DesignPatterns\Creational\AbstractFactory\JsonText;
 use PHPUnit\Framework\TestCase;
 
@@ -18,15 +17,15 @@ class Tests extends TestCase
 {
     public function testCanCreateHtmlFactory()
     {
-        $factory = new HtmlFactory();
-        $text = $factory->createText('test');
+        $factory = new TextFactory();
+        $text = $factory->createHtmlText('test');
         $this->assertInstanceOf(HtmlText::class, $text);
     }
 
     public function testCanCreateJsonFactory()
     {
-        $factory = new JsonFactory();
-        $text = $factory->createText('test');
+        $factory = new TextFactory();
+        $text = $factory->createJsonText('test');
         $this->assertInstanceOf(JsonText::class, $text);
     }
 }
