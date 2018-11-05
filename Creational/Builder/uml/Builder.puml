@@ -1,0 +1,43 @@
+@startuml
+
+namespace DesignPatterns\Creational\Builder {
+    package Builder {
+        interface VehicleBuilder {
+            + build(Vehicle $vehicle, $trunk, $wheels, $doors): Vehicle
+        }
+
+        class CarBuilder
+        class TruckBuilder
+
+        CarBuilder .up.|> VehicleBuilder: implements
+        TruckBuilder .up.|> VehicleBuilder: implements
+    }
+    package VehicleModel {
+        abstract class Vehicle {
+            # $trunk: Trunk
+            # $wheels: Array
+            # $doors: Array
+            + abstract addTrunk(Trunk $trunk): bool
+            + abstract addWheels($wheels): bool
+            + abstract addDoors($doors): bool
+        }
+
+        class Car
+        class Truck
+
+        Car -up-|> Vehicle : extension
+        Truck -up-|> Vehicle : extension
+    }
+}
+
+namespace DesignPatterns\Creational\Builder\Parts {
+    class Trunk
+    class Wheel
+    class Door
+}
+
+DesignPatterns\Creational\Builder\Parts --o Vehicle : composition
+VehicleModel ..o Builder : aggregation
+
+
+@enduml
