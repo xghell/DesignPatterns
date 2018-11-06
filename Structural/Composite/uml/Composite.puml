@@ -1,0 +1,20 @@
+@startuml
+
+interface Renderable {
+    + render()
+}
+class HtmlRender implements Renderable {
+    + elements: Element
+    + addElement(Element $element)
+    + removeElement(Element $element)
+}
+
+abstract Element implements Renderable
+class A extends Element
+class I extends Element
+class P extends Element
+
+HtmlRender --> Element : relations
+
+
+@enduml
