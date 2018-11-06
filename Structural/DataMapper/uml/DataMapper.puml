@@ -1,0 +1,20 @@
+@startuml
+
+class Database {
+    - static $userTable : array
+    + static getUserTable()
+}
+
+class DatabaseAdapter {
+    + findByModel(string $model_name)
+}
+
+class User extends DatabaseAdapter {
+    # $username : string
+    # $phone : string
+    + getUsername()
+    + getPhone()
+    + createUserFromData($userTable)
+}
+
+@enduml
