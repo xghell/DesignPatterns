@@ -1,0 +1,26 @@
+@startuml
+package Adapter {
+    interface DatabaseAdapter {
+        + insert()
+        + delete()
+        + update()
+        + select()
+    }
+    class MysqlAdapter {
+        # $mysql: Mysql
+    }
+    class SqliteAdapter {
+        # $sqlite: Sqlite
+    }
+
+    MysqlAdapter .up.> DatabaseAdapter : implements
+    SqliteAdapter .up.> DatabaseAdapter : implements
+}
+package Database {
+    class Mysql
+    class Sqlite
+}
+
+Adapter o.down. Database : aggregation
+
+@enduml
