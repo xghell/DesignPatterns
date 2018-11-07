@@ -1,0 +1,20 @@
+@startuml
+
+class Facade {
+    # $os : OsInterface
+    # $bios : BiosInterface
+    + turnOn()
+    + turnOff()
+}
+interface OsInterface {
+    + halt()
+    + getName()
+}
+interface BiosInterface {
+    + execute()
+    + waiteForKeyPress()
+    + launch(OsInterface $os)
+    + powerDown()
+}
+
+@enduml
